@@ -1,20 +1,19 @@
 ---
 title: Azure Monitor Ingestion client library for Python
 keywords: Azure, python, SDK, API, azure-monitor-ingestion, monitor
-author: lmazuel
-ms.author: lmazuel
-ms.date: 07/15/2022
+author: pvaneck
+ms.author: paulvaneck
+ms.date: 12/06/2022
 ms.topic: reference
 ms.devlang: python
 ms.service: monitor
 ---
-# Azure Monitor Ingestion client library for Python - version 1.0.0b1 
+# Azure Monitor Ingestion client library for Python - version 1.0.0a20221206001 
 
 
 The Azure Monitor Ingestion client library is used to send custom logs to [Azure Monitor][azure_monitor_overview].
 
-This library allows you to send data from virtually any source to supported built-in tables or to custom tables 
-that you create in Log Analytics workspace. You can even extend the schema of built-in tables with custom columns.
+This library allows you to send data from virtually any source to supported built-in tables or to custom tables that you create in Log Analytics workspace. You can even extend the schema of built-in tables with custom columns.
 
 **Resources:**
 
@@ -25,17 +24,13 @@ that you create in Log Analytics workspace. You can even extend the schema of bu
 - [Samples][samples]
 - [Change log][changelog]
 
-## _Disclaimer_
-
-_Azure SDK Python packages support for Python 2.7 has ended on 01 January 2022. For more information and questions, please refer to https://github.com/Azure/azure-sdk-for-python/issues/20691_
-
 ## Getting started
 
 ### Prerequisites
 
-- Python 3.6 or later
+- Python 3.7 or later
 - An [Azure subscription][azure_subscription]
-- An [Azure Log Analytics workspace][azure_monitor_create_using_portal].
+- An [Azure Log Analytics workspace][azure_monitor_create_using_portal]
 - A [Data Collection Endpoint][data_collection_endpoint]
 - A [Data Collection Rule][data_collection_rule]
 
@@ -46,7 +41,6 @@ Install the Azure Monitor Ingestion client library for Python with [pip][pip]:
 ```bash
 pip install azure-monitor-ingestion
 ```
-
 
 ### Create the client
 
@@ -84,31 +78,28 @@ logs_client = LogsIngestionClient(endpoint, credential)
 
 ### Data Collection Endpoint
 
-Data Collection Endpoints (DCEs) allow you to uniquely configure ingestion settings for Azure Monitor. [This 
-article][data_collection_endpoint] provides an overview of data collection endpoints including their contents and 
-structure and how you can create and work with them.
+Data Collection Endpoints (DCEs) allow you to uniquely configure ingestion settings for Azure Monitor. [This article][data_collection_endpoint] provides an overview of data collection endpoints including their contents and structure and how you can create and work with them.
 
 ### Data Collection Rule
 
-Data collection rules (DCR) define data collected by Azure Monitor and specify how and where that data should be sent or
-stored. The REST API call must specify a DCR to use. A single DCE can support multiple DCRs, so you can specify a
-different DCR for different sources and target tables.
+Data collection rules (DCR) define data collected by Azure Monitor and specify how and where that data should be sent or stored. The REST API call must specify a DCR to use. A single DCE can support multiple DCRs, so you can specify a different DCR for different sources and target tables.
 
-The DCR must understand the structure of the input data and the structure of the target table. If the two don't match,
-it can use a transformation to convert the source data to match the target table. You may also use the transform to
-filter source data and perform any other calculations or conversions.
+The DCR must understand the structure of the input data and the structure of the target table. If the two don't match, it can use a transformation to convert the source data to match the target table. You may also use the transform to filter source data and perform any other calculations or conversions.
 
-For more details, refer to [Data collection rules in Azure Monitor](/azure/azure-monitor/essentials/data-collection-rule-overview).
+For more details, refer to [Data collection rules in Azure Monitor](https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
 
-### Log Analytics Workspace Tables
+### Log Analytics workspace tables
 
-Custom logs can send data to any custom table that you create and to certain built-in tables in your Log Analytics 
-workspace. The target table must exist before you can send data to it. The following built-in tables are currently supported:
+Custom logs can send data to any custom table that you create and to certain built-in tables in your Log Analytics workspace. The target table must exist before you can send data to it. The following built-in tables are currently supported:
 
-- [CommonSecurityLog](/azure/azure-monitor/reference/tables/commonsecuritylog)
-- [SecurityEvents](/azure/azure-monitor/reference/tables/securityevent)
-- [Syslog](/azure/azure-monitor/reference/tables/syslog)
-- [WindowsEvents](/azure/azure-monitor/reference/tables/windowsevent)
+- [CommonSecurityLog](https://learn.microsoft.com/azure/azure-monitor/reference/tables/commonsecuritylog)
+- [SecurityEvents](https://learn.microsoft.com/azure/azure-monitor/reference/tables/securityevent)
+- [Syslog](https://learn.microsoft.com/azure/azure-monitor/reference/tables/syslog)
+- [WindowsEvents](https://learn.microsoft.com/azure/azure-monitor/reference/tables/windowsevent)
+
+### Logs retrieval
+
+The logs that were uploaded using this library can be queried using the [Azure Monitor Query][azure_monitor_query] client library.
 
 ## Examples
 
@@ -116,7 +107,7 @@ workspace. The target table must exist before you can send data to it. The follo
 
 ### Upload custom logs
 
-This example shows uploading logs to Azure monitor.
+This example shows uploading logs to Azure Monitor.
 
 ```python
 import os
@@ -174,7 +165,7 @@ The following code samples show common scenarios with the Azure Monitor Ingestio
 
 #### Logs Ingestion samples
 
-- [Upload a list of logs](https://github.com/Azure/azure-sdk-for-python/blob/azure-monitor-ingestion_1.0.0b1/sdk/monitor/azure-monitor-ingestion/samples/sample_send_small_logs.py) ([async sample](https://github.com/Azure/azure-sdk-for-python/blob/azure-monitor-ingestion_1.0.0b1/sdk/monitor/azure-monitor-ingestion/samples/async_samples/sample_send_small_logs_async.py))
+- [Upload a list of logs](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/monitor/azure-monitor-ingestion/samples/sample_send_small_logs.py) ([async sample](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/monitor/azure-monitor-ingestion/samples/async_samples/sample_send_small_logs_async.py))
 
 ## Contributing
 
@@ -188,17 +179,19 @@ This project has adopted the [Microsoft Open Source Code of Conduct][code_of_con
 
 [azure_core_exceptions]: https://aka.ms/azsdk/python/core/docs#module-azure.core.exceptions
 [azure_core_ref_docs]: https://aka.ms/azsdk/python/core/docs
-[azure_monitor_overview]: /azure/azure-monitor/
+[azure_monitor_create_using_portal]: https://learn.microsoft.com/azure/azure-monitor/logs/quick-create-workspace
+[azure_monitor_overview]: https://learn.microsoft.com/azure/azure-monitor/
+[azure_monitor_query]: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-query#readme
 [azure_subscription]: https://azure.microsoft.com/free/python/
-[changelog]: https://github.com/Azure/azure-sdk-for-python/tree/azure-monitor-ingestion_1.0.0b1/sdk/monitor/azure-monitor-ingestion/CHANGELOG.md
+[changelog]: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-ingestion/CHANGELOG.md
+[data_collection_endpoint]: https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-endpoint-overview
+[data_collection_rule]: https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview
 [package]: https://aka.ms/azsdk-python-monitor-ingestion-pypi
 [pip]: https://pypi.org/project/pip/
 [python_logging]: https://docs.python.org/3/library/logging.html
 [python-ingestion-ref-docs]: https://aka.ms/azsdk/python/monitor-ingestion/docs
-[samples]: https://github.com/Azure/azure-sdk-for-python/tree/azure-monitor-ingestion_1.0.0b1/sdk/monitor/azure-monitor-ingestion/samples
-[source]: https://github.com/Azure/azure-sdk-for-python/blob/azure-monitor-ingestion_1.0.0b1/sdk/monitor/azure-monitor-ingestion/
-[data_collection_endpoint]: //azure/azure-monitor/essentials/data-collection-endpoint-overview
-[data_collection_rule]: /azure/azure-monitor/essentials/data-collection-rule-overview
+[samples]: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-ingestion/samples
+[source]: https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/monitor/azure-monitor-ingestion/
 
 [cla]: https://cla.microsoft.com
 [code_of_conduct]: https://opensource.microsoft.com/codeofconduct/
