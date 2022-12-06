@@ -3,7 +3,7 @@ title:
 keywords: Azure, python, SDK, API, azure-mgmt-securitydevops, securitydevops
 author: lmazuel
 ms.author: lmazuel
-ms.date: 10/13/2022
+ms.date: 12/06/2022
 ms.topic: reference
 ms.devlang: python
 ms.service: securitydevops
