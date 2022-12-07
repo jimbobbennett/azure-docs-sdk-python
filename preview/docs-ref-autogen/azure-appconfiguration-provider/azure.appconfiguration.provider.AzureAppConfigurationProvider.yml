@@ -33,27 +33,18 @@ methods:
   name: load
   summary: Loads configuration settings from Azure App Configuration into a Python
     application.
-  signature: load(connection_string=None, endpoint=None, credential=None, **kwargs)
+  signature: load(*, connection_string=None, endpoint=None, credential=None, **kwargs)
   parameters:
   - name: connection_string
     description: Connection string (one of connection_string or endpoint and credential
       must be set)
-    defaultValue: None
-    types:
-    - <xref:str>
   - name: endpoint
     description: Endpoint (one of connection_string or endpoint and credential must
       be set)
-    defaultValue: None
-    types:
-    - <xref:str>
   - name: credential
     description: Credential (one of connection_string or endpoint and credential must
       be set)
-    defaultValue: None
-    types:
-    - <xref:Union>[<xref:AppConfigConnectionStringCredential>, <xref:TokenCredential>]
-  - name: selectors
+  - name: selects
     description: List of setting selectors to filter configuration settings
   - name: trim_prefixes
     description: List of prefixes to trim from configuration keys
