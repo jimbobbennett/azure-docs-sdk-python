@@ -23,7 +23,7 @@
         href: ~/docs-ref-services/{moniker}/mgmt-advisor-readme.md
         children:
         - azure-mgmt-advisor
-  - name: Agrifood
+  - name: AgriFood
     href: ~/docs-ref-services/{moniker}/agrifood.md
     landingPageType: Service
     items:
@@ -155,6 +155,14 @@
         href: ~/docs-ref-services/{moniker}/mgmt-automation-readme.md
         children:
         - azure-mgmt-automation
+  - name: Autosuggest
+    href: ~/docs-ref-services/{moniker}/autosuggest.md
+    landingPageType: Service
+    items:
+    - name: Autosuggest
+      href: ~/docs-ref-services/{moniker}/cognitiveservices-search-autosuggest-readme.md
+      children:
+      - azure-cognitiveservices-search-autosuggest
   - name: Azure AD B2C
     href: ~/docs-ref-services/{moniker}/azure-ad-b2c.md
     landingPageType: Service
@@ -1741,6 +1749,16 @@
         href: ~/docs-ref-services/{moniker}/mgmt-serialconsole-readme.md
         children:
         - azure-mgmt-serialconsole
+  - name: Server Management
+    href: ~/docs-ref-services/{moniker}/server-management.md
+    landingPageType: Service
+    items:
+    - name: Management
+      items:
+      - name: Resource Management - Server Manager
+        href: ~/docs-ref-services/{moniker}/mgmt-servermanager-readme.md
+        children:
+        - azure-mgmt-servermanager
   - name: Service Bus
     href: ~/docs-ref-services/{moniker}/service-bus.md
     landingPageType: Service
