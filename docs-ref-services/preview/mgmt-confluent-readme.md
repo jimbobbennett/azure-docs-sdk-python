@@ -3,7 +3,7 @@ title:
 keywords: Azure, python, SDK, API, azure-mgmt-confluent, confluent
 author: lmazuel
 ms.author: lmazuel
-ms.date: 11/04/2022
+ms.date: 12/12/2022
 ms.topic: reference
 ms.devlang: python
 ms.service: confluent
